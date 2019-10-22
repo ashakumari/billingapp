@@ -1,5 +1,5 @@
 class BillsController < ApplicationController
-  before_action :set_bill, only: [:show, :edit, :update, :destroy]
+  before_action :set_bill, only: [:show, :edit, :update, :destroy, :print]
 
   # GET /bills
   # GET /bills.json
@@ -19,6 +19,10 @@ class BillsController < ApplicationController
 
   # GET /bills/1/edit
   def edit
+  end
+
+  # GET /bills/1/print
+  def print
   end
 
   # POST /bills

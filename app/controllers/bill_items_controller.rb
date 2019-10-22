@@ -2,8 +2,22 @@ class BillItemsController < ApplicationController
    before_action :set_bill
 
   def create
-    @bill_item = @bill.bill_items.create(bill_item_params)
+  	bill_item_details = bill_item_params
+  	qty = bill_item_params[:quantity].to_i
+  	unit_price = bill_item_params[:unit_price].to_f
+  	bill_item_details[:amount] =  (qty * unit_price).to_s
+    @bill_item = @bill.bill_items.create(bill_item_details)
  	redirect_to @bill
+  end
+
+  def destroy
+  	@bill_item = @bill.bill_items.find(params[:id])
+	if @bill_item.destroy
+	  flash[:success] = "Item was deleted."
+	else
+	  flash[:error] = "Item could not be deleted."
+	end
+	redirect_to @bill 
   end
 
   private

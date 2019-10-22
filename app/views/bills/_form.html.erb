@@ -23,17 +23,12 @@
 
   <div class="field">
     <%= form.label :payment_mode %>
-    <%= form.text_field :payment_mode, id: :bill_payment_mode %>
+    <%= form.select :payment_mode, ["Cash", "Card", "UPI"], id: :bill_payment_mode %>
   </div>
 
   <div class="field">
     <%= form.label :customer %>
     <%= form.text_field :customer, id: :bill_customer %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total %>
-    <%= form.text_field :total, id: :bill_total %>
   </div>
 
   <div class="actions">

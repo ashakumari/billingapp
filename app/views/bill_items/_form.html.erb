@@ -1,9 +1,20 @@
+<table>
+	<tr>
+	<th>Sl no.</th>
+    <th>Partiulars</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>GST %</th>
+    <th></th>
+	</tr>
+	<tr>
 <%= form_for([@bill, @bill.bill_items.build]) do |f| %>
- <%= f.text_field :sl_no, placeholder: f.index %>
- <%= f.text_field :particulars %>
- <%= f.text_field :quantity %>
- <%= f.text_field :unit_price %>
- <%= f.text_field :gst_rate %>
- <%= f.text_field :amount %>
- <%= f.submit %>
+ <td><%= f.text_field :sl_no, value: counter, readonly: true %></td>
+ <td><%= f.text_field :particulars %></td>
+ <td><%= f.text_field :quantity %></td>
+ <td><%= f.text_field :unit_price %></td>
+ <td><%= f.select :gst_rate, [12,18] %></td>
+ <td><%= f.submit %></td>
+</tr>
 <% end %>
+</table>

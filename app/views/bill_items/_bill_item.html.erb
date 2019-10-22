@@ -1,8 +1,11 @@
-<p>
-	<%= bill_item.sl_no %>
-	<%= bill_item.particulars %>
-	<%= bill_item.unit_price %>
-	<%= bill_item.quantity %>
-	<%= bill_item.gst_rate %>
-	<%= bill_item.amount %>
-</p>
+<tr>
+	<td><%= bill_item.sl_no %></td>
+	<td><%= bill_item.particulars %></td>
+	<td><%= bill_item.quantity %></td>
+	<td><%= bill_item.unit_price %></td>
+	<td><%= bill_item.gst_rate %></td>
+	<td><%= bill_item.amount %></td>
+	<% if show_bill_item_action == true %>
+		<td><%= link_to "Delete", bill_bill_item_path(@bill, bill_item.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+	<% end %>
+</tr>

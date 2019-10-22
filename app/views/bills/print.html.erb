@@ -4,22 +4,33 @@
   <tr>
     <th>GSTIN:</th>
     <td>29ABFPL0942C1ZY</td>
+    <td></td>
+    <th colspan="2">Address:</th>
   </tr>
   <tr>
     <th>Bill No:</th>
     <td><%= @bill.bill_no %></td>
+    <td></td>
+    <td colspan="2">Sidharth Automobiles</td>
   </tr>
   <tr>
     <th>Bill Date:</th>
     <td><%= @bill.date %></td>
+    <td></td>
+    <td colspan="2">5th cross, Ashok nagar</td>
   </tr>
   <tr>
     <th>Payment mode:</th>
     <td><%= @bill.payment_mode %></td>
+    <td></td>
+    <td colspan="2">Mandya - 571401</td>
   </tr>
   <tr>
     <th>Customer:</th>
     <td><%= @bill.customer %></td>
+    <td></td>
+    <th>Ph no:</th>
+    <td>08232-403018</td>
   </tr>
 </table>
 
@@ -31,9 +42,8 @@
     <th>Unit Price</th>
     <th>GST %</th>
     <th>Amount</th>
-    <th></th>
   </tr>
-  <%= render @bill.bill_items, show_bill_item_action: true %>
+  <%= render @bill.bill_items, show_bill_item_action: false %>
   <tr>
     <th colspan="5">Total:</th>
     <td><%= @bill.total %></td>
@@ -42,13 +52,3 @@
 
 <table id="bill_tax_calculations_wrapper">
 </table>
-
-<br/>
-<div id="form">
-  <%= render "bill_items/form", counter: @bill.bill_items.size %>
-</div>
-
-
-<%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Print', print_bill_path(@bill) %> |
-<%= link_to 'Back', bills_path %>
