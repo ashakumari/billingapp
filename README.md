@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Rails Installer with Ruby 2.3
 
-Things you may want to cover:
+* Mysql community version developer/full install (Mysql 8)
 
-* Ruby version
+* Update database.yml with correct database credentials (database name, root username and password)
 
-* System dependencies
+* For fresh new database, goto the application code (billingapp folder) on commandline and run "rake db:setup" to create the initial tables
 
-* Configuration
+* Goto the application code (billingapp folder) on commandline and run "rails s" to start the server
 
-* Database creation
+* Only local machine, usually the rails server would run on 3000 port by default (http://localhost:3000)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
