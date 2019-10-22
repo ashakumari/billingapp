@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bill no:</strong>
+  <%= @bill.bill_no %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @bill.date %>
+</p>
+
+<p>
+  <strong>Payment mode:</strong>
+  <%= @bill.payment_mode %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @bill.customer %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @bill.total %>
+</p>
+
+<div id="bill_items_wrapper">
+ <%= render @bill.bill_items %>
+ <div id="form">
+  <%= render "bill_items/form" %>
+ </div>
+</div>
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>

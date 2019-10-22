@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bill_no: MyString
+  date: 2019-10-22 15:22:26
+  payment_mode: MyString
+  customer: MyString
+  total: 
+
+two:
+  bill_no: MyString
+  date: 2019-10-22 15:22:26
+  payment_mode: MyString
+  customer: MyString
+  total: 

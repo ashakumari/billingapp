@@ -2,7 +2,7 @@
 
 * Rails Installer with Ruby 2.3
 
-* Mysql community version developer/full install (Mysql 8)
+* Mysql community version developer/full install (Mysql 8 but during installation choose the Legacy authentication method that support Mysql 5.x - https://dev.mysql.com/doc/mysql-installer/en/server-authentication-method.html)
 
 * Update database.yml with correct database credentials (database name, root username and password)
 
