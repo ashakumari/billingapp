@@ -1,9 +1,24 @@
-<%= link_to 'New Bill', new_bill_path %>
-
-<br/><br/>
-
-<%= link_to 'All Bills', bills_path %>
-
-<br/><br/>
-
-<%= link_to 'Reports', bills_path %>
+<table class="home-menu">
+	<tr>
+		<th>New Bill</th>
+		<th>All Bills</th>
+		<th>Reports</th>
+	</tr>
+	<tr>
+		<td>
+			<%= link_to new_bill_path do %>
+		    	<i class="fa fa-edit fa-5x"></i>
+		   	<% end %>
+	   	</td>
+	   	<td>
+			<%= link_to bills_path do %>
+		    	<i class="fa fa-files-o fa-5x"></i>
+		   	<% end %>
+	   	</td>
+	   	<td>
+			<%= link_to bills_path do %>
+		    	<i class="fa fa-bar-chart fa-5x"></i>
+		   	<% end %>
+	   	</td>
+   </tr>
+</table>

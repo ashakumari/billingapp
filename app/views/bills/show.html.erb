@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<div width="40%" style="float:left;">
-  <%= render "bills/bill_details", print_view: false %>
+<div width="40%" style="float:left;" class="bill-details">
+  <%= render "bills/bill_details" %>
 </div>
 
-<div width="20%"></div>
-
-<div id="form" width="40%" style="float:right;">
+<div id="form" width="40%" style="float:right;" class="add-bill-item">
   <%= render "bill_items/form", bill_items_count: @bill.bill_items.size %>
 </div>
 
-<div style="clear:both;">
-  <%= link_to 'Edit', edit_bill_path(@bill) %> |
-  <%= link_to 'Print', print_bill_path(@bill) %> |
-  <%= link_to 'Back', bills_path %>
+<div style="clear:both;" class="links">
+	<%= link_to 'All Bills', bills_path %> | 
+	<%= link_to 'Edit', edit_bill_path(@bill) %> | 
+	<%= link_to 'Print', '#', onclick: "javascript:print()" %>
 </div>

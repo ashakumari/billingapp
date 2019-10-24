@@ -1,8 +1,7 @@
 require 'humanize'
 
 class BillsController < ApplicationController
-  before_action :set_bill, only: [:show, :edit, :update, :destroy, :print]
-  before_action :calculate_taxable_amt, only: [:show, :print]
+  before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   # GET /bills
   # GET /bills.json
@@ -13,6 +12,8 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
+    @taxable_amount_for_28_percent = @bill.bill_items.where(gst_rate: 28).sum(:amount) / 1.28
+    @taxable_amount_for_18_percent = @bill.bill_items.where(gst_rate: 18).sum(:amount) / 1.18
   end
 
   # GET /bills/new
@@ -22,10 +23,6 @@ class BillsController < ApplicationController
 
   # GET /bills/1/edit
   def edit
-  end
-
-  # GET /bills/1/print
-  def print
   end
 
   # POST /bills
@@ -77,10 +74,5 @@ class BillsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
       params.require(:bill).permit(:bill_no, :date, :payment_mode, :customer, :total)
-    end
-
-    def calculate_taxable_amt
-      @taxable_amount_for_28_percent = @bill.bill_items.where(gst_rate: 28).sum(:amount) / 1.28
-      @taxable_amount_for_18_percent = @bill.bill_items.where(gst_rate: 18).sum(:amount) / 1.18
     end
 end

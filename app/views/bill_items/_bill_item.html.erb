@@ -5,7 +5,7 @@
 	<td><%= number_with_precision(bill_item.unit_price, :precision => 2) %></td>
 	<td><%= bill_item.gst_rate %></td>
 	<td><%= number_to_currency(bill_item.amount, :precision => 2, :unit => '₹') %></td>
-	<% if print_view == false %>
-		<td><%= link_to "Delete", bill_bill_item_path(@bill, bill_item.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
-	<% end %>
+	<td class="action-column">
+		<%= link_to "Delete", bill_bill_item_path(@bill, bill_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
+	</td>
 </tr>

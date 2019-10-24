@@ -40,11 +40,9 @@
     <th>Unit Price</th>
     <th>GST %</th>
     <th>Amount</th>
-    <% if print_view == false %>
-      <th></th>
-    <% end %>
+    <th class="action-column"></th>
   </tr>
-  <%= render @bill.bill_items, print_view: print_view %>
+  <%= render @bill.bill_items %>
   <tr>
     <th colspan="5">Total:</th>
     <td><%= number_to_currency(@bill.total, :precision => 2, :unit => '₹') %></td>
@@ -52,7 +50,9 @@
 </table>
 
 <div>
-  Rupees <%= @bill.total.humanize.capitalize %> only
+  <% if @bill.total %>
+    Rupees <%= @bill.total.humanize.capitalize %> only
+    <% end %>
 </div>
 
 <p>TAX CALCULATIONS</p>
