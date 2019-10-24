@@ -5,7 +5,7 @@ class CreateBills < ActiveRecord::Migration[5.1]
       t.datetime :date
       t.string :payment_mode
       t.string :customer
-      t.decimal :total
+      t.decimal :total, precision: 10, scale: 2
 
       t.timestamps
     end

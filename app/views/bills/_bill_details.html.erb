@@ -47,9 +47,13 @@
   <%= render @bill.bill_items, print_view: print_view %>
   <tr>
     <th colspan="5">Total:</th>
-    <td><%= @bill.total %></td>
+    <td><%= number_to_currency(@bill.total, :precision => 2, :unit => '₹') %></td>
   </tr>    
 </table>
+
+<div>
+  Rupees <%= @bill.total.humanize.capitalize %> only
+</div>
 
 <p>TAX CALCULATIONS</p>
 
@@ -77,9 +81,9 @@
   </tr>
   <tr>
     <th>Total</th>
-    <th><%= (@taxable_amount_for_28_percent + @taxable_amount_for_18_percent).round(2) %></th>
-    <th><%= (@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2).round(2) %></th>
-    <th><%= (@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2).round(2) %></th>
-    <th><%= (@taxable_amount_for_28_percent * 0.28  + @taxable_amount_for_18_percent * 0.18).round(2) %></th>
+    <th><%= number_to_currency(@taxable_amount_for_28_percent + @taxable_amount_for_18_percent, :precision => 2, :unit => '₹') %></th>
+    <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2, :precision => 2, :unit => '₹') %></th>
+    <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2, :precision => 2, :unit => '₹') %></th>
+    <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28  + @taxable_amount_for_18_percent * 0.18, :precision => 2, :unit => '₹') %></th>
   </tr>
 </table>

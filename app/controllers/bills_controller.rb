@@ -1,3 +1,5 @@
+require 'humanize'
+
 class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy, :print]
   before_action :calculate_taxable_amt, only: [:show, :print]

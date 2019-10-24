@@ -14,6 +14,11 @@ module Billingapp
     # Set application timezone to preferred timezon
     config.time_zone = "Chennai"
 
+    # Set decimals to be read as numbers instead of individual digits for finanacial numbers or currency values
+    Humanize.configure do |config|
+	  config.decimals_as = :number # [:digits, :number], default: :digits
+	end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -3,17 +3,17 @@ class BillItemsController < ApplicationController
 
   def create
     @bill_item = @bill.bill_items.create(bill_item_params)
- 	redirect_to @bill
+ 	  redirect_to @bill
   end
 
   def destroy
   	@bill_item = @bill.bill_items.find(params[:id])
-	if @bill_item.destroy
-	  flash[:success] = "Item was deleted."
-	else
-	  flash[:error] = "Item could not be deleted."
-	end
-	redirect_to @bill 
+  	if @bill_item.destroy
+  	  flash[:success] = "Item was deleted."
+  	else
+  	  flash[:error] = "Item could not be deleted."
+  	end
+  	redirect_to @bill 
   end
 
   private

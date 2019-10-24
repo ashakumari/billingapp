@@ -4,9 +4,9 @@ class CreateBillItems < ActiveRecord::Migration[5.1]
       t.integer :sl_no
       t.string :particulars
       t.integer :quantity
-      t.decimal :unit_price
+      t.decimal :unit_price, precision: 10, scale: 2
       t.decimal :gst_rate
-      t.decimal :amount
+      t.decimal :amount, precision: 10, scale: 2
       t.references :bill, foreign_key: true
 
       t.timestamps
