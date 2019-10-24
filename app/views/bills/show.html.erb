@@ -1,49 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div width="40%" style="float:left;">
-<table border="0">
-  <tr>
-    <th>GSTIN:</th>
-    <td>29ABFPL0942C1ZY</td>
-  </tr>
-  <tr>
-    <th>Bill No:</th>
-    <td><%= @bill.bill_no %></td>
-  </tr>
-  <tr>
-    <th>Bill Date:</th>
-    <td><%= @bill.date.strftime("%d-%m-%y %H:%M") %></td>
-  </tr>
-  <tr>
-    <th>Payment mode:</th>
-    <td><%= @bill.payment_mode %></td>
-  </tr>
-  <tr>
-    <th>Customer:</th>
-    <td><%= @bill.customer %></td>
-  </tr>
-</table>
-
-<table id="bill_items_wrapper" border="1">
-  <tr>
-    <th>Sl no.</th>
-    <th>Partiulars</th>
-    <th>Quantity</th>
-    <th>Unit Price</th>
-    <th>GST %</th>
-    <th>Amount</th>
-    <th></th>
-  </tr>
-  <%= render @bill.bill_items, show_bill_item_action: true %>
-  <tr>
-    <th colspan="5">Total:</th>
-    <td><%= @bill.total %></td>
-  </tr>    
-</table>
-
-<table id="bill_tax_calculations_wrapper">
-</table>
-
+  <%= render "bills/bill_details", print_view: false %>
 </div>
 
 <div width="20%"></div>

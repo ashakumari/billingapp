@@ -1,0 +1,85 @@
+<table border="0">
+  <tr>
+    <th>GSTIN:</th>
+    <td>29ABFPL0942C1ZY</td>
+    <td></td>
+    <th colspan="2">Address:</th>
+  </tr>
+  <tr>
+    <th>Bill No:</th>
+    <td><%= @bill.bill_no %></td>
+    <td></td>
+    <td colspan="2">Sidharth Automobiles</td>
+  </tr>
+  <tr>
+    <th>Bill Date:</th>
+    <td><%= @bill.date.strftime("%d-%m-%y %H:%M") %></td>
+    <td></td>
+    <td colspan="2">5th cross, Ashok nagar</td>
+  </tr>
+  <tr>
+    <th>Payment mode:</th>
+    <td><%= @bill.payment_mode %></td>
+    <td></td>
+    <td colspan="2">Mandya - 571401</td>
+  </tr>
+  <tr>
+    <th>Customer:</th>
+    <td><%= @bill.customer %></td>
+    <td></td>
+    <th>Ph no:</th>
+    <td>08232-403018</td>
+  </tr>
+</table>
+
+<table id="bill_items_wrapper" border="1">
+  <tr>
+    <th>Sl no.</th>
+    <th>Partiulars</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>GST %</th>
+    <th>Amount</th>
+    <% if print_view == false %>
+      <th></th>
+    <% end %>
+  </tr>
+  <%= render @bill.bill_items, print_view: print_view %>
+  <tr>
+    <th colspan="5">Total:</th>
+    <td><%= @bill.total %></td>
+  </tr>    
+</table>
+
+<p>TAX CALCULATIONS</p>
+
+<table id="bill_tax_calculations_wrapper" border="1">
+  <tr>
+    <th>Tax Rate</th>
+    <th>Taxable Amount</th>
+    <th>CGST</th>
+    <th>SGST</th>
+    <th>Total Tax</th>
+  </tr>
+  <tr>
+    <td>28%</td>
+    <td><%= (@taxable_amount_for_28_percent).round(2) %></td>
+    <td><%= (@taxable_amount_for_28_percent * 0.28 / 2).round(2) %></td>
+    <td><%= (@taxable_amount_for_28_percent * 0.28 / 2).round(2) %></td>
+    <td><%= (@taxable_amount_for_28_percent * 0.28).round(2) %></td>
+  </tr>
+  <tr>
+    <td>18%</td>
+    <td><%= (@taxable_amount_for_18_percent).round(2) %></td>
+    <td><%= (@taxable_amount_for_18_percent * 0.18 / 2).round(2) %></td>
+    <td><%= (@taxable_amount_for_18_percent * 0.18 / 2).round(2) %></td>
+    <td><%= (@taxable_amount_for_18_percent * 0.18).round(2) %></td>  
+  </tr>
+  <tr>
+    <th>Total</th>
+    <th><%= (@taxable_amount_for_28_percent + @taxable_amount_for_18_percent).round(2) %></th>
+    <th><%= (@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2).round(2) %></th>
+    <th><%= (@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2).round(2) %></th>
+    <th><%= (@taxable_amount_for_28_percent * 0.28  + @taxable_amount_for_18_percent * 0.18).round(2) %></th>
+  </tr>
+</table>
