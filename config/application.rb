@@ -11,6 +11,9 @@ module Billingapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    # Set application timezone to preferred timezon
+    config.time_zone = "Chennai"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

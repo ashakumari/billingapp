@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div width="40%" style="float:left;">
 <table border="0">
   <tr>
     <th>GSTIN:</th>
@@ -11,7 +12,7 @@
   </tr>
   <tr>
     <th>Bill Date:</th>
-    <td><%= @bill.date %></td>
+    <td><%= @bill.date.strftime("%d-%m-%y %H:%M") %></td>
   </tr>
   <tr>
     <th>Payment mode:</th>
@@ -43,12 +44,16 @@
 <table id="bill_tax_calculations_wrapper">
 </table>
 
-<br/>
-<div id="form">
-  <%= render "bill_items/form", counter: @bill.bill_items.size %>
 </div>
 
+<div width="20%"></div>
 
-<%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Print', print_bill_path(@bill) %> |
-<%= link_to 'Back', bills_path %>
+<div id="form" width="40%" style="float:right;">
+  <%= render "bill_items/form", bill_items_count: @bill.bill_items.size %>
+</div>
+
+<div style="clear:both;">
+  <%= link_to 'Edit', edit_bill_path(@bill) %> |
+  <%= link_to 'Print', print_bill_path(@bill) %> |
+  <%= link_to 'Back', bills_path %>
+</div>

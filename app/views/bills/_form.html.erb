@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :bill_no %>
-    <%= form.text_field :bill_no, id: :bill_bill_no %>
+    <%= form.label :bill_no%>
+    <%= form.text_field :bill_no, id: :bill_bill_no, value: 'SA-'+ Time.current().to_i.to_s, readonly: true %>
   </div>
 
   <div class="field">
