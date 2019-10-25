@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_tag(reports_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+  <div class="input-group">  
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    <div class="input-group-btn">  
+      <%= button_tag "Go", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+    </div>  
+  </div>  
+<% end %>
+
+<h1>Bills</h1>
+
+<% if @bills_28_percent_gst_cash_payment.present? and  @bills_28_percent_gst_cash_payment.size > 0 %>
+	<p>Cash Payment bills with 28% GST</p>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_cash_payment, tax_rate: 28 %>
+<% end %>
+
+<% if @bills_28_percent_gst_credit_payment.present? and  @bills_28_percent_gst_credit_payment.size > 0 %>
+	<p>Credit Payment bills with 28% GST</p>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_credit_payment, tax_rate: 28 %>
+<% end %>
+
+<% if @bills_18_percent_gst_cash_payment.present? and  @bills_18_percent_gst_cash_payment.size > 0 %>
+	<p>Cash Payment bills with 18% GST</p>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_cash_payment, tax_rate: 18 %>
+<% end %>
+
+<% if @bills_18_percent_gst_credit_payment.present? and  @bills_18_percent_gst_credit_payment.size > 0 %>
+	<p>Credit Payment bills with 18% GST</p>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_credit_payment, tax_rate: 18 %>
+<% end %>

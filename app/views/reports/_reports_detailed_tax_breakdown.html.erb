@@ -1,0 +1,39 @@
+<% 
+  total_taxable_amount = 0
+%>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bill no</th>
+      <th>Date</th>
+      <th>Taxable Amount</th>
+      <th>CGST</th>
+      <th>SGST</th>
+      <th>Total Tax</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% bills.each do |bill| %>
+      <% total_taxable_amount += bill.total_taxable_amount %>
+      <tr>
+        <td><%= link_to bill.bill_no, bill %></td>
+        <td><%= bill.date.strftime("%d-%m-%y %H:%M") %></td>
+        <td><%= (bill.total_taxable_amount).round(2) %></td>
+        <td><%= (bill.total_taxable_amount * (tax_rate / 100.00) / 2).round(2) %></td>
+        <td><%= (bill.total_taxable_amount * (tax_rate / 100.00) / 2).round(2) %></td>
+        <td><%= (bill.total_taxable_amount * (tax_rate / 100.00)).round(2) %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <th colspan="2">TOTAL</th>
+      <th><%= number_to_currency(total_taxable_amount.round(2), :precision => 2, :unit => '₹') %></th>
+      <th><%= number_to_currency((total_taxable_amount * (tax_rate / 100.00) / 2).round(2), :precision => 2, :unit => '₹') %></th>
+      <th><%= number_to_currency((total_taxable_amount * (tax_rate / 100.00) / 2).round(2), :precision => 2, :unit => '₹') %></th>
+      <th><%= number_to_currency((total_taxable_amount * (tax_rate / 100.00)).round(2), :precision => 2, :unit => '₹') %></th>
+    </tr>
+  </tbody>
+</table>
