@@ -6,6 +6,8 @@
 	<td><%= bill_item.gst_rate %></td>
 	<td><%= number_to_currency(bill_item.amount, :precision => 2, :unit => '₹') %></td>
 	<td class="action-column">
-		<%= link_to "Delete", bill_bill_item_path(@bill, bill_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
+		<%= link_to bill_bill_item_path(@bill, bill_item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-action', title: 'Delete Bill Item' do %>
+        	<i class="fa fa-trash"></i>
+        <% end %>
 	</td>
 </tr>

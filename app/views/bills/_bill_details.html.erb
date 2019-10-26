@@ -1,89 +1,90 @@
-<table border="0">
+<table>
   <tr>
     <th>GSTIN:</th>
     <td><%= BillingApp::BillMetaInfo::GSTIN_No %></td>
-    <td></td>
     <th colspan="2">Address:</th>
   </tr>
   <tr>
     <th>Bill No:</th>
     <td><%= @bill.bill_no %></td>
-    <td></td>
     <td colspan="2"><%= BillingApp::Branding::ShopName %></td>
   </tr>
   <tr>
     <th>Bill Date:</th>
     <td><%= @bill.date.strftime("%d-%m-%y %H:%M") %></td>
-    <td></td>
     <td colspan="2"><%= BillingApp::Branding::ShopAddress %></td>
   </tr>
   <tr>
     <th>Payment mode:</th>
     <td><%= @bill.payment_mode %></td>
-    <td></td>
     <td colspan="2"><%= BillingApp::Branding::ShopCityAndPincode %></td>
   </tr>
   <tr>
     <th>Customer:</th>
     <td><%= @bill.customer %></td>
-    <td></td>
     <th>Ph no:</th>
     <td><%= BillingApp::Branding::ShopContactNo %></td>
   </tr>
 </table>
 
-<table id="bill_items_wrapper" border="1">
-  <tr>
-    <th>Sl no.</th>
-    <th>Partiulars</th>
-    <th>Quantity</th>
-    <th>Unit Price</th>
-    <th>GST %</th>
-    <th>Amount</th>
-    <th class="action-column"></th>
-  </tr>
-  <%= render @bill.bill_items %>
-  <tr>
-    <th colspan="5">Total:</th>
-    <td><%= number_to_currency(@bill.total, :precision => 2, :unit => '₹') %></td>
-  </tr>    
-</table>
-
-<div>
-  <% if @bill.total %>
-    Rupees <%= @bill.total.humanize.capitalize %> only
+<div class="bill-items-wrapper">
+  <table>
+    <tr>
+      <th colspan="6" class="table-title">Purchase Items</th>
+    </tr>
+    <tr>
+      <th>Sl no.</th>
+      <th>Partiulars</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>GST %</th>
+      <th>Amount</th>
+    </tr>
+    <%= render @bill.bill_items %>
+    <tr>
+      <th colspan="5">Total:</th>
+      <th><%= number_to_currency(@bill.total, :precision => 2, :unit => '₹') %></th>
+    </tr>
+    <% if @bill.total %>
+      <tr>
+        <th colspan="6">(In words) Rupees <%= @bill.total.humanize.capitalize %> only</th>
+      </tr>
     <% end %>
+  </table>
 </div>
 
-<p>TAX CALCULATIONS</p>
-
-<table id="bill_tax_calculations_wrapper" border="1">
-  <tr>
-    <th>Tax Rate</th>
-    <th>Taxable Amount</th>
-    <th>CGST</th>
-    <th>SGST</th>
-    <th>Total Tax</th>
-  </tr>
-  <tr>
-    <td>28%</td>
-    <td><%= (@taxable_amount_for_28_percent).round(2) %></td>
-    <td><%= (@taxable_amount_for_28_percent * 0.28 / 2).round(2) %></td>
-    <td><%= (@taxable_amount_for_28_percent * 0.28 / 2).round(2) %></td>
-    <td><%= (@taxable_amount_for_28_percent * 0.28).round(2) %></td>
-  </tr>
-  <tr>
-    <td>18%</td>
-    <td><%= (@taxable_amount_for_18_percent).round(2) %></td>
-    <td><%= (@taxable_amount_for_18_percent * 0.18 / 2).round(2) %></td>
-    <td><%= (@taxable_amount_for_18_percent * 0.18 / 2).round(2) %></td>
-    <td><%= (@taxable_amount_for_18_percent * 0.18).round(2) %></td>  
-  </tr>
-  <tr>
-    <th>Total</th>
-    <th><%= number_to_currency(@taxable_amount_for_28_percent + @taxable_amount_for_18_percent, :precision => 2, :unit => '₹') %></th>
-    <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2, :precision => 2, :unit => '₹') %></th>
-    <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2, :precision => 2, :unit => '₹') %></th>
-    <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28  + @taxable_amount_for_18_percent * 0.18, :precision => 2, :unit => '₹') %></th>
-  </tr>
-</table>
+<div class="bill-tax-calculations-wrapper">
+  <table>
+    <tr>
+      <th colspan="5" class="table-title">Tax Calculations</th>
+    </tr>
+    <tr>
+      <th>Tax Rate</th>
+      <th>Taxable Amount</th>
+      <th>CGST</th>
+      <th>SGST</th>
+      <th>Total Tax</th>
+    </tr>
+    <tr>
+      <td>28%</td>
+      <td><%= (@taxable_amount_for_28_percent).round(2) %></td>
+      <td><%= (@taxable_amount_for_28_percent * 0.28 / 2).round(2) %></td>
+      <td><%= (@taxable_amount_for_28_percent * 0.28 / 2).round(2) %></td>
+      <td><%= (@taxable_amount_for_28_percent * 0.28).round(2) %></td>
+    </tr>
+    <tr>
+      <td>18%</td>
+      <td><%= (@taxable_amount_for_18_percent).round(2) %></td>
+      <td><%= (@taxable_amount_for_18_percent * 0.18 / 2).round(2) %></td>
+      <td><%= (@taxable_amount_for_18_percent * 0.18 / 2).round(2) %></td>
+      <td><%= (@taxable_amount_for_18_percent * 0.18).round(2) %></td>  
+    </tr>
+    <tr>
+      <th>Total</th>
+      <th><%= number_to_currency(@taxable_amount_for_28_percent + @taxable_amount_for_18_percent, :precision => 2, :unit => '₹') %></th>
+      <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2, :precision => 2, :unit => '₹') %></th>
+      <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28 / 2 + @taxable_amount_for_18_percent * 0.18 / 2, :precision => 2, :unit => '₹') %></th>
+      <th><%= number_to_currency(@taxable_amount_for_28_percent * 0.28  + @taxable_amount_for_18_percent * 0.18, :precision => 2, :unit => '₹') %></th>
+    </tr>
+  </table>
+</div>

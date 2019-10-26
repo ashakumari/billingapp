@@ -2,8 +2,14 @@
   total_taxable_amount = 0
 %>
 
+<div class="tax-report">
 <table>
   <thead>
+    <tr>
+      <th colspan="6" class="table-title">
+        <%= "#{payment_type} Payment bills with #{tax_rate}% GST" %>
+      </th>
+    </tr>
     <tr>
       <th>Bill no</th>
       <th>Date</th>
@@ -37,3 +43,4 @@
     </tr>
   </tbody>
 </table>
+</div>

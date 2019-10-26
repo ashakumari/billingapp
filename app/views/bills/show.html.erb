@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<div width="40%" style="float:left;" class="bill-details">
+<h1>Bill Details</h1>
+
+<div width="60%" style="float:left;" class="bill-details">
   <%= render "bills/bill_details" %>
 </div>
 
-<div id="form" width="40%" style="float:right;" class="add-bill-item">
+<div width="40%" style="float:right;" class="add-bill-item">
   <%= render "bill_items/form", bill_items_count: @bill.bill_items.size %>
 </div>
 

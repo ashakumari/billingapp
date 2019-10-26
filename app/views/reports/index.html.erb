@@ -1,34 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<%= form_tag(reports_path, :method => "get", class: 'navbar-form navbar-left') do %>  
-  <div class="input-group"> 
-  	Select date range :  
-    <%= date_field_tag :start_date, params[:start_date] || Date.today  %>  
-     - 
-    <%= date_field_tag :end_date, params[:end_date] || Date.today %> 
+<h1>Bills Reporting</h1>
 
-    <%= button_tag "Show", :class => 'btn',:name => nil%>
+<%= form_tag(reports_path, :method => "get") do %>  
+  <div class="input-group"> 
+  	<%= label_tag 'Select Date Range:' %>
+    <%= date_field_tag :start_date, params[:start_date] || Date.today  %> - <%= date_field_tag :end_date, params[:end_date] || Date.today %>
+    <%= submit_tag "Filter" %>
   </div>  
 <% end %>
 
-<h1>Bills</h1>
+<p id="notice">
+	Showing results for date range : 
+	<% if params[:start_date].present? %>
+		<%= "#{params[:start_date]} to #{params[:end_date]}" %>
+	<% else %>
+		Today
+	<% end %>
+</p>
 
 <% if @bills_28_percent_gst_cash_payment.present? and  @bills_28_percent_gst_cash_payment.size > 0 %>
-	<p>Cash Payment bills with 28% GST</p>
-	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_cash_payment, tax_rate: 28 %>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_cash_payment, tax_rate: 28, payment_type: 'Cash' %>
 <% end %>
 
 <% if @bills_28_percent_gst_credit_payment.present? and  @bills_28_percent_gst_credit_payment.size > 0 %>
-	<p>Credit Payment bills with 28% GST</p>
-	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_credit_payment, tax_rate: 28 %>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_credit_payment, tax_rate: 28, payment_type: 'Credit' %>
 <% end %>
 
 <% if @bills_18_percent_gst_cash_payment.present? and  @bills_18_percent_gst_cash_payment.size > 0 %>
-	<p>Cash Payment bills with 18% GST</p>
-	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_cash_payment, tax_rate: 18 %>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_cash_payment, tax_rate: 18, payment_type: 'Cash' %>
 <% end %>
 
 <% if @bills_18_percent_gst_credit_payment.present? and  @bills_18_percent_gst_credit_payment.size > 0 %>
-	<p>Credit Payment bills with 18% GST</p>
-	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_credit_payment, tax_rate: 18 %>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_credit_payment, tax_rate: 18, payment_type: 'Credit' %>
 <% end %>
