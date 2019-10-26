@@ -18,7 +18,7 @@
     <% @bills.each do |bill| %>
       <tr>
         <td><%= bill.bill_no %></td>
-        <td><%= bill.date %></td>
+        <td><%= bill.date.strftime("%d-%m-%y %H:%M") %></td>
         <td><%= bill.payment_mode %></td>
         <td><%= bill.customer %></td>
         <td><%= bill.total %></td>

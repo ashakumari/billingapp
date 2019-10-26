@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :bill_no%>
-    <%= form.text_field :bill_no, id: :bill_bill_no, value: 'SA-'+ Time.current().to_i.to_s, readonly: true %>
+    <%= form.text_field :bill_no, id: :bill_bill_no, value: BillingApp::BillMetaInfo::BillNo_Prefix + Time.current().to_i.to_s, readonly: true %>
   </div>
 
   <div class="field">

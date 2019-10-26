@@ -8,7 +8,7 @@
 	
 	* Timezone (Update value for the config parameter "config.time_zone" which is currently set to Indian timezone)
 
-	* 
+* Update initializers/billingapp_config.rb with preferred values for Branding and other business related configurations (Update values only within the double quotes("") and do not update anything else). If you do this change when the application is already started, then you will have to restart the server (stop and start again)
 
 * Create database in Mysql for the app with preferred name
 
