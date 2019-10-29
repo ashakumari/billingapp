@@ -1,8 +1,9 @@
 module BillingApp
   class Branding
     ShopName = "ABC Automobiles"
+    ShopNameInRegionalLanguage = "ಎಬಿಸಿ ಆಟೋಮೊಬೈಲ್ಸ್"
     ShopAddress = "some cross, some area"
-    ShopCityAndPincode = "That City - xxxxxx"
+    ShopCity = "That City"
     ShopContactNo = "xxxxx-xxxxxx"
   end
 

@@ -160,12 +160,31 @@ a.icon-action {
 	text-decoration: none;	
 }
 
-.bill-items-wrapper, .tax-report {
-	margin: 1em 1em 1em 1em;
-}
-
 .note {
 	color: $bright;
 	font-style: italic;
 	margin: 1em 1em 1em 1em;
+}
+
+.align-right {
+	text-align: right;
+	float: right;
+}
+
+.brand-name-in-bill {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.bill-metainfo-wrapper table, .bill-items-wrapper table, .bill-tax-calculations-wrapper table {
+	margin: 0;
+	width: 100%;
+}
+
+.bill-metainfo-wrapper table th, .bill-metainfo-wrapper table td {
+  	border: 0;
+}
+
+.logo-image {
+	width: 5em;
 }

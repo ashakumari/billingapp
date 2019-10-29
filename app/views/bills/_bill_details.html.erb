@@ -1,31 +1,35 @@
-<table>
-  <tr>
-    <th>GSTIN:</th>
-    <td><%= BillingApp::BillMetaInfo::GSTIN_No %></td>
-    <th colspan="2">Address:</th>
-  </tr>
-  <tr>
-    <th>Bill No:</th>
-    <td><%= @bill.bill_no %></td>
-    <td colspan="2"><%= BillingApp::Branding::ShopName %></td>
-  </tr>
-  <tr>
-    <th>Bill Date:</th>
-    <td><%= @bill.date.strftime("%d-%m-%y %H:%M") %></td>
-    <td colspan="2"><%= BillingApp::Branding::ShopAddress %></td>
-  </tr>
-  <tr>
-    <th>Payment mode:</th>
-    <td><%= @bill.payment_mode %></td>
-    <td colspan="2"><%= BillingApp::Branding::ShopCityAndPincode %></td>
-  </tr>
-  <tr>
-    <th>Customer:</th>
-    <td><%= @bill.customer %></td>
-    <th>Ph no:</th>
-    <td><%= BillingApp::Branding::ShopContactNo %></td>
-  </tr>
-</table>
+<div class="bill-metainfo-wrapper">
+  <table>
+    <tr> 
+      <td>   
+        <span class="brand-name-in-bill"><%= BillingApp::Branding::ShopNameInRegionalLanguage %></span>
+        <br/>
+        <span class="brand-name-in-bill"><%= BillingApp::Branding::ShopName %></span>
+        <br/>
+        <%= BillingApp::Branding::ShopAddress %>
+        <%= BillingApp::Branding::ShopCity %>
+        <br/>
+        GSTIN: <%= BillingApp::BillMetaInfo::GSTIN_No %>
+        <br/>
+        Ph no: <%= BillingApp::Branding::ShopContactNo %>
+      </td>
+      <td>
+        <%= image_tag "/assets/logo.png", class: "logo-image align-right"%>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2" class="table-title">Tax Invoice</th>
+    </tr>
+    <tr>
+      <td>Customer: <%= @bill.customer %></td>
+      <td class="align-right">Bill No: <%= @bill.bill_no %></td>
+    </tr>
+    <tr>
+      <td>Payment by: <%= @bill.payment_mode %></td>
+      <td class="align-right">Bill Date: <%= @bill.date.strftime("%d-%m-%y %H:%M") %></td>
+    </tr>
+  </table>
+</div>
 
 <div class="bill-items-wrapper">
   <table>
