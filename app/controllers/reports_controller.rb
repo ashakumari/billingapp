@@ -19,10 +19,10 @@ class ReportsController < ApplicationController
 		date_filter_criteria = "bills.date BETWEEN '#{start_date}' AND '#{end_date}'"
 
 		filter_criteria_28_gst_cash = "bills.payment_mode = 'Cash' AND bill_items.gst_rate = 28" + " AND " + date_filter_criteria
-		filter_criteria_28_gst_credit = "bills.payment_mode = 'Credit' AND bill_items.gst_rate = 28" + " AND " + date_filter_criteria
+		filter_criteria_28_gst_credit = "bills.payment_mode = 'Bank' AND bill_items.gst_rate = 28" + " AND " + date_filter_criteria
 
 		filter_criteria_18_gst_cash = "bills.payment_mode = 'Cash' AND bill_items.gst_rate = 18" + " AND " + date_filter_criteria
-		filter_criteria_18_gst_credit = "bills.payment_mode = 'Credit' AND bill_items.gst_rate = 18" + " AND " + date_filter_criteria
+		filter_criteria_18_gst_credit = "bills.payment_mode = 'Bank' AND bill_items.gst_rate = 18" + " AND " + date_filter_criteria
 
 		@bills_28_percent_gst_cash_payment = Bill.joins(:bill_items).where(filter_criteria_28_gst_cash).select("bills.*, sum(bill_items.amount) / 1.28 as total_taxable_amount").group("bill_id")
 		@bills_28_percent_gst_credit_payment = Bill.joins(:bill_items).where(filter_criteria_28_gst_credit).select("bills.*, sum(bill_items.amount) / 1.28 as total_taxable_amount").group("bill_id")

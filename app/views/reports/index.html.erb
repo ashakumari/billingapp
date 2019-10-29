@@ -24,7 +24,7 @@
 <% end %>
 
 <% if @bills_28_percent_gst_credit_payment.present? and  @bills_28_percent_gst_credit_payment.size > 0 %>
-	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_credit_payment, tax_rate: 28, payment_type: 'Credit' %>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_28_percent_gst_credit_payment, tax_rate: 28, payment_type: 'Bank' %>
 <% end %>
 
 <% if @bills_18_percent_gst_cash_payment.present? and  @bills_18_percent_gst_cash_payment.size > 0 %>
@@ -32,5 +32,5 @@
 <% end %>
 
 <% if @bills_18_percent_gst_credit_payment.present? and  @bills_18_percent_gst_credit_payment.size > 0 %>
-	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_credit_payment, tax_rate: 18, payment_type: 'Credit' %>
+	<%= render 'reports_detailed_tax_breakdown', bills: @bills_18_percent_gst_credit_payment, tax_rate: 18, payment_type: 'Bank' %>
 <% end %>
