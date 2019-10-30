@@ -1,6 +1,8 @@
 <p> Add New Item </p>
 
 <%= form_for([@bill, @bill.bill_items.build]) do |f| %>
+  
+
   <div class="field">
     <%= f.label :sl_no %>
     <%= f.text_field :sl_no, value: bill_items_count+1, readonly: true %>

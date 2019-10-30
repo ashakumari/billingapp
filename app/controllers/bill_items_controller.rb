@@ -3,7 +3,17 @@ class BillItemsController < ApplicationController
 
   def create
     @bill_item = @bill.bill_items.create(bill_item_params)
- 	  redirect_to @bill
+    
+    if @bill_item.errors.any?
+      notice_msg = "Following validation errors prohibited this bill item from being saved:"
+      @bill_item.errors.full_messages.each do |message| 
+        notice_msg += " #{message},"
+      end
+    else
+      notice_msg = 'Bill Item was successfully created.'
+    end
+
+ 	  redirect_to @bill, notice: notice_msg
   end
 
   def destroy
