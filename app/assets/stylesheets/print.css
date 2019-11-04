@@ -1,6 +1,7 @@
 @media print {
 	body {
 		width: 100%;
+		height: auto;
 	}
 
 	.add-bill-item {
@@ -19,5 +20,9 @@
 		border-radius: 0;
 		box-shadow: none;
 		-webkit-box-shadow: none;
+	}
+
+	.bill-footnote-wrapper {
+		display: block;
 	}
 }
