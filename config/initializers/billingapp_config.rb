@@ -10,5 +10,6 @@ module BillingApp
   class BillMetaInfo
   	GSTIN_No = "xxxxxxxxxxxxxxx"
   	BillNo_Prefix = "ABC-"
+    BillNo_Size = 5
   end
 end
