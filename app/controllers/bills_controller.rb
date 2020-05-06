@@ -24,9 +24,12 @@ class BillsController < ApplicationController
     bill_number_size = BillingApp::BillMetaInfo::BillNo_Size
 
     last_bill_record = Bill.last
-    last_bill_no = last_bill_record.bill_no
-    last_bill_no_without_prefix = last_bill_no.sub(bill_prefix, ‘’).to_i
-
+    if last_bill_record
+      last_bill_no = last_bill_record.bill_no
+      last_bill_no_without_prefix = last_bill_no.sub(bill_prefix, ‘’).to_i
+    else
+      last_bill_no_without_prefix = 0
+    end
 
     next_bill_no_without_prefix = last_bill_no_without_prefix + 1
     @next_bill_no = bill_prefix + next_bill_no_without_prefix.to_s.rjust(bill_number_size, '0')
