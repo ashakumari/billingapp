@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20191022102824) do
 
-  create_table "bill_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "bill_items", force: :cascade do |t|
     t.integer "sl_no"
     t.string "particulars"
     t.integer "quantity"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20191022102824) do
     t.index ["bill_id"], name: "index_bill_items_on_bill_id"
   end
 
-  create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "bills", force: :cascade do |t|
     t.string "bill_no"
     t.datetime "date"
     t.string "payment_mode"

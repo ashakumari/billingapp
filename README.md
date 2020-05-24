@@ -2,36 +2,22 @@
 
 * Rails Installer with Ruby 2.3
 
-* Mysql community version developer/full install (Mysql 8 but during installation choose the Legacy authentication method that support Mysql 5.x - https://dev.mysql.com/doc/mysql-installer/en/server-authentication-method.html)
-
 * Update config/application.rb with preferred values for the following parameters:
 	
 	* Timezone (Update value for the config parameter "config.time_zone" which is currently set to Indian timezone)
 
 * Update initializers/billingapp_config.rb with preferred values for Branding and other business related configurations (Update values only within the double quotes("") and do not update anything else). If you do this change when the application is already started, then you will have to restart the server (stop and start again)
 
-* Create database in Mysql for the app with preferred name
+* If you intend to use Mysql instead of SQLite database
+	
+	* Install Mysql community version developer/full install (Mysql 8 but during installation choose the Legacy authentication method that support Mysql 5.x - https://dev.mysql.com/doc/mysql-installer/en/server-authentication-method.html)
+	
+	* Create database in Mysql for the app with preferred name
 
-* Update database.yml with correct database credentials (database name, root username and password)
+	* Update database.yml with correct database credentials (database name, root username and password)
 
 * For fresh new database, goto the application code (billingapp folder) on commandline and run "rake db:setup" to create the initial tables
 
-* Create following triggers in the database:
-
-	# To update the amount in bill_items table based on quanity and unit_price
-
-	CREATE TRIGGER bill_item_amount_update 
-	BEFORE INSERT 
-	ON `bill_items` FOR EACH ROW 
-	SET NEW.amount = NEW.quantity * NEW.unit_price
-
-	# To update the total in bills table based on the sum of amounts of the bill items
-
-	CREATE TRIGGER bill_total_update 
-	AFTER INSERT 
-	ON `bill_items` FOR EACH ROW 
-	UPDATE bills SET total = (SELECT SUM(amount) 
-	FROM bill_items WHERE bill_items.bill_id=bills.id)
 
 * LOCAL MACHINE INSTRUCTIONS:
 
