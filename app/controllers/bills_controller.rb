@@ -26,7 +26,7 @@ class BillsController < ApplicationController
     last_bill_record = Bill.last
     if last_bill_record
       last_bill_no = last_bill_record.bill_no
-      last_bill_no_without_prefix = last_bill_no.sub(bill_prefix, ‘’).to_i
+      last_bill_no_without_prefix = last_bill_no.sub(bill_prefix, "").to_i
     else
       last_bill_no_without_prefix = 0
     end
