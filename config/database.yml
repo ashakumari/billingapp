@@ -79,8 +79,6 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: billingapp_production
   url: <%= ENV['DATABASE_URL'] %>
 
 # SQLite. Versions 3.8.0 and up are supported.
