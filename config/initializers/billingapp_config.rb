@@ -1,15 +1,15 @@
 module BillingApp
   class Branding
-    ShopName = "ABC Automobiles"
-    ShopNameInRegionalLanguage = "ಎಬಿಸಿ ಆಟೋಮೊಬೈಲ್ಸ್"
-    ShopAddress = "Street name goes here, Area name goes here, "
-    ShopCity = "City Name"
-    ShopContactNo = "xxxxx-xxxxxx"
+    ShopName = "Siddarth Automobiles"
+    ShopNameInRegionalLanguage = "ಸಿದ್ಧಾರ್ಥ್ ಆಟೋಮೊಬೈಲ್ಸ್"
+    ShopAddress = "1266/B, 5th cross, Ashok nagar, "
+    ShopCity = "Mandya"
+    ShopContactNo = "08232-403018"
   end
 
   class BillMetaInfo
-  	GSTIN_No = "xxxxxxxxxxxxxxx"
-  	BillNo_Prefix = "ABC-"
-    BillNo_Size = 5
+  	GSTIN_No = "29ABFPL0942C1ZY"
+    BillNo_Prefix = "SA-"
+    BillNo_Size = 4
   end
 end
