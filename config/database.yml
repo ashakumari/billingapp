@@ -81,8 +81,7 @@ test:
 production:
   <<: *default
   database: billingapp_production
-  username: billingapp
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
 
 # SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
