@@ -54,4 +54,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'humanize'
 
-gem 'yaml_db'
+gem 'seed_dump'
