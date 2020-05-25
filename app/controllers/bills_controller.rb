@@ -6,7 +6,7 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all
+    @bills = Bill.all.order(:id)
   end
 
   # GET /bills/1

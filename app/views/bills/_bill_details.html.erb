@@ -44,7 +44,7 @@
       <th>GST %</th>
       <th>Amount</th>
     </tr>
-    <%= render @bill.bill_items %>
+    <%= render @bill.bill_items.order(:sl_no) %>
     <tr>
       <th colspan="5">Total:</th>
       <th><%= number_to_currency(@bill.total, :precision => 2, :unit => '₹') %></th>
