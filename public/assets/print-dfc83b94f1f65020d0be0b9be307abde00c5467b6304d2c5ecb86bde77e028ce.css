@@ -1,0 +1,28 @@
+@media print {
+  /* line 2, /Users/kasha/Desktop/sourcecode/personal/billingapp/app/assets/stylesheets/print.scss */
+  body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  /* line 8, /Users/kasha/Desktop/sourcecode/personal/billingapp/app/assets/stylesheets/print.scss */
+  div.branding-header, div.add-bill-item, .links, .action-column, #notice {
+    display: none;
+  }
+
+  /* line 12, /Users/kasha/Desktop/sourcecode/personal/billingapp/app/assets/stylesheets/print.scss */
+  div.container {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  /* line 21, /Users/kasha/Desktop/sourcecode/personal/billingapp/app/assets/stylesheets/print.scss */
+  .bill-footnote-wrapper {
+    display: block;
+  }
+}
