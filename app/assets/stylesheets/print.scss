@@ -2,12 +2,7 @@
 	body {
 		width: 100%;
 		height: auto;
-	}
-
-	.add-bill-item {
-		width: 100%;
-		clear: both;
-		float: center;
+		margin: 0;
 	}
 
 	div.branding-header, div.add-bill-item, .links, .action-column, #notice {
@@ -15,8 +10,9 @@
 	}
 
 	div.container {
-		/*width: 100%;*/
+		width: 100%;
 		border: 0;
+		margin: 0;
 		border-radius: 0;
 		box-shadow: none;
 		-webkit-box-shadow: none;
